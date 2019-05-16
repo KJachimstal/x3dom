@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>X3DOM - Scene</title>
+    <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script>
+    <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'/>
+    <link rel="stylesheet" href="style.css" />
+    
+</head>
+<body>
+    <div>
+        <x3d width="900px" height="900px" id="scene">
+            <scene>
+                <PointLight id="pointLight" on="true" intensity="5" color="1 1 1" location="0 15 1.5" radius="50"></PointLight>
+                <DirectionalLight id="directionalLight" direction="1 0 0" location="0 15 1.5" on="true" intensity="5.0" shadowIntensity="0.0"></DirectionalLight>
+                <SpotLight id="spotLight1" on="true" beamWidth="0.1" color="1 1 1" cutOffAngle="0.5" location="0 1 100" radius="100"></SpotLight>
+                <transform rotation="0 1 0 0.9">
+                    <SpotLight id="spotLight2" on="true" beamWidth="0.1" color="0 1 1" cutOffAngle="0.5" location="-20 5 -20" radius="100"></SpotLight>
+                </transform>
+                <viewpoint id="viewPoint1" position="0 10.0 180.0"></viewpoint>
+                <shape>
+                    <appearance>
+                        <material diffuseColor="0 0 1"></material>
+                        <ImageTexture url="./textures/trawa.jpg"></ImageTexture>
+                    </appearance>
+                    <box size="140.0 1 140.0"></box>
+                </shape>
+                <!-- HOME -->
+                <transform translation="-30 0 -35">
+                    <group id="houses">
+                        <transform id="house" translation="0 0 0">
+                            <inline url="Home.x3d"></inline>
+                        </transform>
+                    </group>
+                </transform>
+            </scene>
+        </x3d>
+    </div>
+    <div>
+        <button id="directLight">Światło kierunkowe</button>
+        <button id="reflectLight1">Światło reflektorowe 1</button>
+        <button id="reflectLight2">Światło reflektorowe 2</button>
+        <button id="movingLight">Światło ruchome</button>
+    </div>
+    <script type='text/javascript' src="script.js"></script>
+</body>
+</html>
